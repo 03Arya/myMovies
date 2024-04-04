@@ -16,11 +16,6 @@ export default function Home() {
         </div>
         <div className="flex py-6 gap-5 flex-row overflow-x-auto hide-scrollbar">
           <Movies />
-          <Movies />
-          <Movies />
-          <Movies />
-          <Movies />
-          <Movies />
         </div>
       </section>
 
@@ -30,9 +25,6 @@ export default function Home() {
           <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
         </div>
         <div className="flex py-6 gap-5 flex-col overflow-y-auto max-h-96">
-          <Popular />
-          <Popular />
-          <Popular />
           <Popular />
         </div>
       </section>
