@@ -25,8 +25,8 @@ export default function Movies() {
     return (
         <>
             {movie.map((movie) => (
-                <div>
-                    <a href="" key={movie.id}>
+                <div  key={movie.id}>
+                    <a href="">
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-40 rounded-md shadow-lg" width="150" height="200" />
                         <p className='py-2 font-bold'>{movie.title}</p>
                         <div className='flex gap-2'>
