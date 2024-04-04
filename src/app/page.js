@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Movies from "@/components/movies";
 import Popular from "@/components/popular";
@@ -28,13 +29,14 @@ export default function Home() {
           <p className="basis-1/2 text-lg text-slate-950  font-bold">Popular</p>
           <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
         </div>
-        <div  className="flex py-6 gap-5 flex-col">
+        <div className="flex py-6 gap-5 flex-col overflow-y-auto max-h-96">
           <Popular />
           <Popular />
           <Popular />
-
+          <Popular />
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
