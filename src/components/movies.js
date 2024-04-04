@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function Movies() {
     const [movie, setMovie] = useState([]);
@@ -26,14 +27,15 @@ export default function Movies() {
         <>
             {movie.map((movie) => (
                 <div  key={movie.id}>
-                    <a href="">
+                    <Link href={`/movie/${movie.id}`} passHref>
+                    
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-40 rounded-md shadow-lg" width="150" height="200" />
                         <p className='py-2 font-bold'>{movie.title}</p>
                         <div className='flex gap-2'>
                             <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
                             <span className='text-black text-xs'>{movie.vote_average}/10 IMDb</span>
                         </div>
-                    </a>
+                    </Link>
                 </div>
 
             ))}

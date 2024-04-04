@@ -4,6 +4,7 @@ import Movies from "@/components/movies";
 import Popular from "@/components/popular";
 import Image from "next/image";
 
+
 export default function Home() {
   return (
     <main className="px-6 max-w-md mx-auto">
