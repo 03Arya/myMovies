@@ -1,5 +1,3 @@
-import "@/style/darkmode.scss"
-
 export default function Header() {
     return (
         <header className="px-8 py-8  pr-6 grid grid-cols-3 mx-auto">
