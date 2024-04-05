@@ -42,11 +42,11 @@ export default function Popular() {
                                 <p className='font-bold pb-2'>{movie.title}</p>
                                 <div className='flex gap-2 pb-2'>
                                     <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
-                                    <span className='text-black text-xs'>{movie.vote_average}</span>
+                                    <span className='text-gray-400 text-xs'>{movie.vote_average}/10 IMDb</span>
                                 </div>
                                 <div className='flex space-x-2 pb-2'>
-                                    {movie.genres.map((genre) => (
-                                        <p key={genre.id} className='text-xs m-0 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3'>{genre.name}</p>
+                                    {movie.genres.slice(0,3).map((genre) => (
+                                        <p key={genre.id} className='text-xs m-0 w-30 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3 max-h-10'>{genre.name}</p>
                                     ))}
                                 </div>
                                 <div className='flex gap-2'>

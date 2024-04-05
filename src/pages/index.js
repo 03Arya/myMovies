@@ -7,25 +7,25 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="px-6 max-w-md mx-auto">
+    <main className="pl-6 max-w-md mx-auto">
       <Header />
 
       <section>
-        <div className="flex gap-20  flex-row">
-          <p className="basis-1/2 text-lg text-slate-950  font-bold">Now Showing</p>
+        <div className="flex gap-20 pr-6 flex-row">
+          <p className="basis-1/2 text-lg text-indigo-950  font-bold">Now Showing</p>
           <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
         </div>
-        <div className="flex py-6 gap-5 flex-row overflow-x-auto hide-scrollbar">
+        <div className="flex py-6 gap-5 flex-row overflow-x-auto no-scrollbar">
           <Movies />
         </div>
       </section>
 
-      <section className="pt-10">
-        <div className="flex gap-20  flex-row">
-          <p className="basis-1/2 text-lg text-slate-950  font-bold">Popular</p>
+      <section className="pt-10 pr-6">
+        <div className="flex gap-20 flex-row">
+          <p className="basis-1/2 text-lg text-indigo-950 font-bold">Popular</p>
           <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
         </div>
-        <div className="flex py-6 gap-5 flex-col overflow-y-auto max-h-96">
+        <div className="flex py-6 gap-5 flex-col overflow-y-auto no-scrollbar max-h-96">
           <Popular />
         </div>
       </section>
