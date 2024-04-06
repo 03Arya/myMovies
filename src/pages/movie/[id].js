@@ -66,6 +66,7 @@ export default function Movie() {
 
                 </div>
             </div>
+            <Footer />
         </main>
     );
 }

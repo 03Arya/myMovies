@@ -9,7 +9,7 @@ export default function Footer() {
             <FontAwesomeIcon className='text-indigo-900 max-w-6 w-6 h-6 max-h-6 mx-auto' icon={faTape} />
             <FontAwesomeIcon className=' max-w-6 w-6 h-6 max-h-6 mx-auto' icon={faBookmark} />
             <FontAwesomeIcon className=' max-w-6 w-6 h-6 max-h-6 mx-auto' icon={faBookmark} />
-            <Link href="/" className='bg-black w-full h-1 mt-5 mb-1'>
+            <Link href="/" className='bg-black w-full h-1 mt-5 mb-1 col-start-2'>
 
             </Link>
         </footer>

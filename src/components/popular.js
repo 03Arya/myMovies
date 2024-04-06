@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 export default function Popular() {
     const [movies, setMovies] = useState([]);
@@ -35,9 +36,9 @@ export default function Popular() {
                 const hours = Math.floor(movie.runtime / 60);
                 const minutes = movie.runtime % 60;
                 return (
-                    <a href="" key={movie.id}>
-                        <div className="grid grid-cols-3">
-                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-30 rounded-md shadow-lg" width="85" height="120" />
+                    <Link href={`/movie/${movie.id}`} passHref>
+                        <div className="grid gap-3 grid-cols-3">
+                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-30 rounded-md shadow-lg" width="95" height="120" />
                             <div className='col-span-2'>
                                 <p className='font-bold pb-2'>{movie.title}</p>
                                 <div className='flex gap-2 pb-2'>
@@ -45,7 +46,7 @@ export default function Popular() {
                                     <span className='text-gray-400 text-xs'>{movie.vote_average}/10 IMDb</span>
                                 </div>
                                 <div className='flex space-x-2 pb-2'>
-                                    {movie.genres.slice(0,3).map((genre) => (
+                                    {movie.genres.slice(0, 3).map((genre) => (
                                         <p key={genre.id} className='text-xs m-0 w-30 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3 max-h-10'>{genre.name}</p>
                                     ))}
                                 </div>
@@ -55,7 +56,7 @@ export default function Popular() {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 );
             })}
         </>

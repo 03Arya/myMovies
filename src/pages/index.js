@@ -11,19 +11,19 @@ export default function Home() {
       <Header />
 
       <section>
-        <div className="flex gap-20 pr-6 flex-row">
-          <p className="basis-1/2 text-lg text-indigo-950  font-bold">Now Showing</p>
-          <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
+        <div className="grid grid-cols-2 gap-20 pr-6 flex-row">
+          <p className="basis-1/2 text-lg text-indigo-950 font-bold w-40">Now Showing</p>
+          <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
         </div>
         <div className="flex py-6 gap-5 flex-row overflow-x-auto no-scrollbar">
           <Movies />
         </div>
       </section>
 
-      <section className="pt-10 pr-6">
-        <div className="flex gap-20 flex-row">
-          <p className="basis-1/2 text-lg text-indigo-950 font-bold">Popular</p>
-          <button className="basis-1/4 max-w-40 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full">See more</button>
+      <section>
+      <div className="grid grid-cols-2 gap-20 pr-6 flex-row">
+          <p className="basis-1/2 text-lg text-indigo-950 font-bold w-40">Popular</p>
+          <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
         </div>
         <div className="flex py-6 gap-5 flex-col overflow-y-auto no-scrollbar max-h-96">
           <Popular />
