@@ -36,7 +36,7 @@ export default function Popular() {
                 const hours = Math.floor(movie.runtime / 60);
                 const minutes = movie.runtime % 60;
                 return (
-                    <Link href={`/movie/${movie.id}`} passHref>
+                    <Link key={movie.id} href={`/movie/${movie.id}`} passHref>
                         <div className="grid gap-3 grid-cols-3">
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-30 rounded-md shadow-lg" width="95" height="120" />
                             <div className='col-span-2'>
