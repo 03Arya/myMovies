@@ -5,7 +5,7 @@
   display: block;
   height: 2em;
   width: 3.5em;
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(111, 111, 111);
   border-radius: 1em;
   transition: background-color 500ms ease;
 }
@@ -27,9 +27,9 @@
 
 .switch__checkbox:checked + .switch:after {
   left: calc(97% - 1.7em);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
 }
 
 .switch__checkbox:checked + .switch {
-  background-color: hsl(95, 65%, 46%);
+  background-color: hsl(0, 0%, 100%);
 }/*# sourceMappingURL=darkmode.css.map */

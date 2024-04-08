@@ -32,6 +32,7 @@ export default function Movie() {
             setCast(topCasts);
             setVideo(officialTrailer)
             console.log(topCasts);
+            console.log(data)
 
         };
 
@@ -80,7 +81,7 @@ export default function Movie() {
                         <p className='text-gray-400'>Language</p>
                         <p className='text-gray-400'>Rating</p>
                         <p>{movie.runtime}</p>
-                        <p>{movie.original_language}</p>
+                        <p className='text-uppercase'>{movie.original_language}</p>
                         <p>{movie.rating}</p>
                     </div>
                     <p className='text-indigo-950 font-semibold text-2xl'>Description </p>
