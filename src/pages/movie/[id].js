@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import Footer from '../../components/footer';
+import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 
 export default function Movie() {
@@ -31,9 +31,8 @@ export default function Movie() {
             setMovie(data);
             setCast(topCasts);
             setVideo(officialTrailer)
-            console.log(officialTrailer)
-            console.log(videoData.results[0].key)
-            console.log(video)
+            console.log(topCasts);
+
         };
 
         if (id) {
@@ -61,30 +60,53 @@ export default function Movie() {
                         <FontAwesomeIcon className='bg-white ml-4 rounded-full p-4 text-black' icon={faPlay} />
                         Play Trailer</a>
                 </div>
-                <p className='py-2 font-bold'>{movie.title}</p>
-                <div className='flex gap-2'>
-                    <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
-                    <span className='text-black text-xs'>{movie.vote_average}/10 IMDb</span>
-                </div>
-                <div className='flex space-x-2 pb-2'>
-                    {movie.genres.slice(0, 3).map((genre) => (
-                        <p key={genre.id} className='text-xs m-0 w-30 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3 max-h-10'>{genre.name}</p>
-                    ))}
-                </div>
-                <p>Length {movie.runtime}</p>
-                <img src={`https://image.tmdb.org/t/p/w500${movie}`} alt="" />
-                <p>Language {movie.original_language}</p>
-                <p>Description {movie.overview}</p>
-                <div>
-                    {casts.map((cast) => {
-                        return (
-                            <p key={cast.cast_id}>{cast.name}</p>
-                        )
-                    })}
+                <section className='px-6'>
+                    <div className='grid grid-cols-6 pt-6'>
+                        <p className='font-bold text-xl col-span-4'>{movie.title}</p>
+                        <FontAwesomeIcon className='col-start-6 text-2xl' icon={faBookmark} />
+                    </div>
 
-                </div>
+                    <div className='flex gap-2 py-3'>
+                        <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
+                        <span className='text-black text-xs'>{movie.vote_average}/10 IMDb</span>
+                    </div>
+                    <div className='flex space-x-2 pb-2'>
+                        {movie.genres.slice(0, 3).map((genre) => (
+                            <p key={genre.id} className='text-xs m-0 w-30 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3 max-h-10'>{genre.name}</p>
+                        ))}
+                    </div>
+                    <div className='grid grid-cols-3 py-2'>
+                        <p className='text-gray-400'>Length</p>
+                        <p className='text-gray-400'>Language</p>
+                        <p className='text-gray-400'>Rating</p>
+                        <p>{movie.runtime}</p>
+                        <p>{movie.original_language}</p>
+                        <p>{movie.rating}</p>
+                    </div>
+                    <p className='text-indigo-950 font-semibold text-2xl'>Description </p>
+                    <p className='text-gray-400 pb-3'>{movie.overview}</p>
+                    <section className='grid grid-cols-5 gap-3 py-4'>
+                        <div className='col-span-5 grid grid-cols-2'>
+                            <p className='text-indigo-950 font-semibold text-2xl'>Cast</p>
+                            <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
+
+                        </div>
+                        {casts.map((cast) => {
+                            return (
+                                <div>
+                                    <img src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} className='w-16 h-24 rounded-md' />
+                                    <p className='text-xs font-medium' key={cast.cast_id}>{cast.name}</p>
+                                </div>
+                            )
+                        })}
+
+                    </section>
+                </section>
             </div>
-            <Footer />
+            <footer className="grid grid-cols-3 pt-4">
+                <Link href="/" className='bg-black w-full h-1 mt-5 mb-1 col-start-2'>
+                </Link>
+            </footer>
         </main>
     );
 }
