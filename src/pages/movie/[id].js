@@ -93,9 +93,9 @@ export default function Movie() {
                         </div>
                         {casts.map((cast) => {
                             return (
-                                <div>
+                                <div key={cast.cast_id}>
                                     <img src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} className='w-16 h-24 rounded-md' />
-                                    <p className='text-xs font-medium' key={cast.cast_id}>{cast.name}</p>
+                                    <p className='text-xs font-medium'>{cast.name}</p>
                                 </div>
                             )
                         })}
