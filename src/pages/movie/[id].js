@@ -50,7 +50,7 @@ export default function Movie() {
             <div>
                 <div className='h-80'>
                     <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="w-screen max-w-md mx-auto h-80 max-h-80 block absolute" />
-                    <div className='grid grid-cols-8 top-10 relative'>
+                    <div className='grid grid-cols-8 top-8 relative'>
                         <Link className='col-start-2' href='/'>
                             <FontAwesomeIcon className='text-white text-xl relative ' icon={faArrowLeft} />
                         </Link>
