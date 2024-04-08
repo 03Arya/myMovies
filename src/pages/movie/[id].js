@@ -4,11 +4,15 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import Footer from '@/components/footer';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../../components/footer';
+import Link from 'next/link';
 
 export default function Movie() {
     const [movie, setMovie] = useState(null);
     const [casts, setCast] = useState([]);
+    const [video, setVideo] = useState(null);
 
     const router = useRouter();
     const { id } = router.query;
@@ -18,14 +22,18 @@ export default function Movie() {
             const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const castResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const rating = await fetch(`https://api.themoviedb.org/3/movie/${id}/get-movie-certifications?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
+            const video = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const data = await response.json();
+            const videoData = await video.json()
+            const officialTrailer = videoData.results.find((video) => video.name === 'Official Trailer');
             const castData = await castResponse.json();
             const topCasts = castData.cast.slice(0, 5);
             setMovie(data);
             setCast(topCasts);
-            console.log(data)
-            console.log(casts)
-            console.log(rating)
+            setVideo(officialTrailer)
+            console.log(officialTrailer)
+            console.log(videoData.results[0].key)
+            console.log(video)
         };
 
         if (id) {
@@ -37,12 +45,22 @@ export default function Movie() {
         return <div>Loading...</div>;
     }
 
-
-
     return (
-        <main>
+        <main className='max-w-md mx-auto'>
             <div>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} className=" w-screen rounded-md shadow-lg" height="240" />
+                <div className='h-80'>
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="w-screen max-w-md mx-auto h-80 max-h-80 block absolute" />
+                    <div className='grid grid-cols-8 top-10 relative'>
+                        <Link className='col-start-2' href='/'>
+                            <FontAwesomeIcon className='text-white text-xl relative ' icon={faArrowLeft} />
+                        </Link>
+                        <input type="checkbox" id="switch" class="switch__checkbox" />
+                        <label class="switch" for="switch"></label>
+                    </div>
+                    <a className='grid relative justify-center max-w-20 mx-auto top-48 text-white' href={`https://www.youtube.com/watch?v=${video && video.key}`}>
+                        <FontAwesomeIcon className='bg-white ml-4 rounded-full p-4 text-black' icon={faPlay} />
+                        Play Trailer</a>
+                </div>
                 <p className='py-2 font-bold'>{movie.title}</p>
                 <div className='flex gap-2'>
                     <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
