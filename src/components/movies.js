@@ -30,7 +30,7 @@ export default function Movies() {
                     <Link href={`/movie/${movie.id}`} passHref>
                     
                         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-40 rounded-md shadow-lg" width="150" height="200" />
-                        <p className='py-2 font-bold'>{movie.title}</p>
+                        <p className='dark:text-white transition duration-500 py-2 font-bold'>{movie.title}</p>
                         <div className='flex gap-2'>
                             <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
                             <span className='text-gray-400 text-xs'>{movie.vote_average}/10 IMDb</span>

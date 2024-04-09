@@ -7,12 +7,12 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="pl-6 max-w-md mx-auto">
+    <main className="pl-6 max-w-md mx-auto dark:bg-black transition duration-500">
       <Header />
 
       <section>
         <div className="grid grid-cols-2 gap-20 pr-6 flex-row">
-          <p className="basis-1/2 text-lg text-indigo-950 font-bold w-40">Now Showing</p>
+          <p className="dark:text-indigo-200 transition duration-500 basis-1/2 text-lg text-indigo-950 font-bold w-40">Now Showing</p>
           <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
         </div>
         <div className="flex py-6 gap-5 flex-row overflow-x-auto no-scrollbar">
@@ -22,7 +22,7 @@ export default function Home() {
 
       <section>
       <div className="grid grid-cols-2 gap-20 pr-6 flex-row">
-          <p className="basis-1/2 text-lg text-indigo-950 font-bold w-40">Popular</p>
+          <p className="dark:text-indigo-200 transition duration-500 basis-1/2 text-lg text-indigo-950 font-bold w-40">Popular</p>
           <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
         </div>
         <div className="flex py-6 gap-5 flex-col overflow-y-auto no-scrollbar max-h-96">

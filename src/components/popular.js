@@ -40,7 +40,7 @@ export default function Popular() {
                         <div className="grid gap-3 grid-cols-3">
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="max-w-30 rounded-md shadow-lg" width="95" height="120" />
                             <div className='col-span-2'>
-                                <p className='font-bold pb-2'>{movie.title}</p>
+                                <p className='dark:text-white transition duration-500 font-bold pb-2'>{movie.title}</p>
                                 <div className='flex gap-2 pb-2'>
                                     <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
                                     <span className='text-gray-400 text-xs'>{movie.vote_average}/10 IMDb</span>
