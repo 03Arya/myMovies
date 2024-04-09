@@ -45,7 +45,7 @@ export default function Popular() {
                                     <FontAwesomeIcon className='text-amber-400 max-w-4' icon={faStar} />
                                     <span className='text-gray-400 text-xs'>{movie.vote_average}/10 IMDb</span>
                                 </div>
-                                <div className='flex space-x-2 pb-2'>
+                                <div className='flex space-x-2 pb-2 pr-2 max-w-60'>
                                     {movie.genres.slice(0, 3).map((genre) => (
                                         <p key={genre.id} className='text-xs m-0 w-30 text-center text-blue-400 bg-indigo-200 rounded-full py-1 px-5 leading-3 max-h-10'>{genre.name}</p>
                                     ))}

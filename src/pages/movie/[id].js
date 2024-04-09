@@ -25,17 +25,18 @@ export default function Movie() {
         const fetchData = async () => {
             const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const castResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
-            const rating = await fetch(`https://api.themoviedb.org/3/movie/${id}/get-movie-certifications?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
+            const rating = await fetch(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const video = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
             const data = await response.json();
             const videoData = await video.json()
+            const ratingData = await rating.json();
             const officialTrailer = videoData.results.find((video) => video.name === 'Official Trailer');
             const castData = await castResponse.json();
             const topCasts = castData.cast.slice(0, 5);
             setMovie(data);
             setCast(topCasts);
             setVideo(officialTrailer)
-            console.log(topCasts);
+            console.log(ratingData)
             console.log(data)
 
         };
