@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import useDarkMode from "@/hooks/useDarkmode";
+import { Blocks } from 'react-loader-spinner'
 
 
 export default function Movie() {
@@ -16,7 +17,7 @@ export default function Movie() {
     const [casts, setCast] = useState([]);
     const [video, setVideo] = useState(null);
     const [theme, toggleTheme] = useDarkMode();
-
+    const [isGold, setIsGold] = React.useState(false);
 
     const router = useRouter();
     const { id } = router.query;
@@ -47,14 +48,23 @@ export default function Movie() {
     }, [id]);
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return (<Blocks
+            margin="auto"
+            height="180"
+            width="180"
+            color="#4fa94d"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            visible={true}
+        />)
     }
 
     return (
-        <main className='max-w-md mx-auto dark:bg-black transition duration-500'>
+        <main className='mx-auto dark:bg-black transition duration-500'>
             <div>
                 <div className='h-56'>
-                    <iframe className='w-screen max-w-md h-56 absolute' src={`https://www.youtube.com/embed/${video && video.key}`} frameborder="0"></iframe>
+                    <iframe className='w-screen h-56 absolute' src={`https://www.youtube.com/embed/${video && video.key}`} frameborder="0"></iframe>
                     <div className='grid grid-cols-8 top-12 relative'>
                         <Link className='col-start-2' href='/'>
                             <FontAwesomeIcon className='text-white text-2xl relative ' icon={faArrowLeft} />
@@ -62,12 +72,13 @@ export default function Movie() {
                         <input checked={theme === 'dark'} onChange={toggleTheme} type="checkbox" id="switch" class="switch__checkbox" />
                         <label class="switch" for="switch"></label>
                     </div>
-
                 </div>
                 <section className='px-6'>
                     <div className='grid grid-cols-6 pt-6'>
                         <p className='dark:text-white transition duration-500 font-bold text-xl col-span-4'>{movie.title}</p>
-                        <FontAwesomeIcon className='dark:text-white transition duration-500 col-start-6 text-2xl' icon={faBookmark} />
+                        <button className='col-start-6' onClick={() => setIsGold(!isGold)}>
+                            <FontAwesomeIcon color={isGold ? "gold" : theme === "dark" ? "white" : "black"} className='transition duration-500  text-2xl' icon={faBookmark} />
+                        </button>
                     </div>
 
                     <div className='flex gap-2 py-3'>

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="pl-6 max-w-md mx-auto dark:bg-black transition duration-500">
+    <main className="pl-6 mx-auto dark:bg-black transition duration-500">
       <Header />
 
       <section>
