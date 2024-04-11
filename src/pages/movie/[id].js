@@ -32,7 +32,7 @@ export default function Movie() {
             const ratingData = await rating.json();
             const officialTrailer = videoData.results.find((video) => video.name === 'Official Trailer');
             const castData = await castResponse.json();
-            const topCasts = castData.cast.slice(0, 5);
+            const topCasts = castData.cast.slice(0, 4);
             setMovie(data);
             setCast(topCasts);
             setVideo(officialTrailer)
@@ -53,18 +53,16 @@ export default function Movie() {
     return (
         <main className='max-w-md mx-auto dark:bg-black transition duration-500'>
             <div>
-                <div className='h-80'>
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className="w-screen max-w-md mx-auto h-80 max-h-80 block absolute" />
-                    <div className='grid grid-cols-8 top-8 relative'>
+                <div className='h-56'>
+                    <iframe className='w-screen max-w-md h-56 absolute' src={`https://www.youtube.com/embed/${video && video.key}`} frameborder="0"></iframe>
+                    <div className='grid grid-cols-8 top-12 relative'>
                         <Link className='col-start-2' href='/'>
                             <FontAwesomeIcon className='text-white text-2xl relative ' icon={faArrowLeft} />
                         </Link>
                         <input checked={theme === 'dark'} onChange={toggleTheme} type="checkbox" id="switch" class="switch__checkbox" />
                         <label class="switch" for="switch"></label>
                     </div>
-                    <a className='grid relative justify-center max-w-20 mx-auto top-48 text-white' href={`https://www.youtube.com/watch?v=${video && video.key}`}>
-                        <FontAwesomeIcon className='bg-white ml-4 rounded-full p-4 text-black' icon={faPlay} />
-                        Play Trailer</a>
+
                 </div>
                 <section className='px-6'>
                     <div className='grid grid-cols-6 pt-6'>
@@ -91,7 +89,7 @@ export default function Movie() {
                     </div>
                     <p className='dark:text-indigo-200 transition duration-500 text-indigo-950 font-semibold text-2xl'>Description </p>
                     <p className='dark:text-white transition duration-500 text-gray-400 pb-3'>{movie.overview}</p>
-                    <section className='grid grid-cols-5 gap-3 py-4'>
+                    <section className='grid grid-cols-4 gap-x-3 gap-3 py-4'>
                         <div className='col-span-5 grid grid-cols-2'>
                             <p className='dark:text-indigo-200 transition duration-500 text-indigo-950 font-semibold text-2xl'>Cast</p>
                             <button className="basis-1/4 max-w-40 w-20 px-2 border-2 text-sm border-gray-400 text-gray-400 rounded-full justify-self-end">See more</button>
@@ -100,17 +98,16 @@ export default function Movie() {
                         {casts.map((cast) => {
                             return (
                                 <div key={cast.cast_id}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} className='w-16 h-24 rounded-md' />
+                                    <img src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`} className='rounded-md' />
                                     <p className='dark:text-white transition duration-500 text-xs font-medium'>{cast.name}</p>
                                 </div>
                             )
                         })}
-
                     </section>
                 </section>
             </div>
             <footer className="grid grid-cols-3 pt-4">
-                <Link href="/" className='dark:bg-white transition duration-500 bg-black w-full h-1 mt-5 mb-1 col-start-2'>
+                <Link href="/" className='dark:bg-white transition duration-500 bg-black w-full h-1 mt-5 mb-1 col-start-2 rounded-sm'>
                 </Link>
             </footer>
         </main>
