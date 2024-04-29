@@ -11,7 +11,7 @@ export default function Movies() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=73ea132ff745a5ddfdf52978aa7204e1');
+            const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=db8f29ba6e1e44b8b22e02c5def38a8e');
             const data = await response.json();
             setMovie(data.results);
             console.log(data.results);

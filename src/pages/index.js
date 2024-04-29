@@ -3,12 +3,25 @@ import Header from "@/components/header";
 import Movies from "@/components/movies";
 import Popular from "@/components/popular";
 import Image from "next/image";
-
+import Axios from "axios";
+import { useState } from "react";
 
 export default function Home() {
+  const [searchResults, setSearchResults] = useState([])
+
+  async function searchHandler(event) {
+    const response = await Axios.get(`https://api.themoviedb.org/3/search/multi?query=${event.target.value}`,{
+      headers: {
+        Authorization: "Bearer " + process.env.NEXT_PUBLIC_READ_ACCESS_TOKEN
+      }
+    })
+  
+    setSearchResults(response.data.results)
+  }
   return (
     <main className="pl-6 mx-auto dark:bg-black transition duration-500">
       <Header />
+      <input onChange={searchHandler} type="search" className="border border-gray-300" />
 
       <section>
         <div className="grid grid-cols-2 gap-20 pr-6 flex-row">

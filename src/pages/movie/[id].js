@@ -24,10 +24,10 @@ export default function Movie() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
-            const castResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
-            const rating = await fetch(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
-            const video = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=db8f29ba6e1e44b8b22e02c5def38a8e`);
+            const castResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=db8f29ba6e1e44b8b22e02c5def38a8e`);
+            const rating = await fetch(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=db8f29ba6e1e44b8b22e02c5def38a8e`);
+            const video = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=db8f29ba6e1e44b8b22e02c5def38a8e`);
             const data = await response.json();
             const videoData = await video.json()
             const ratingData = await rating.json();

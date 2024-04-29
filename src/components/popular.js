@@ -11,11 +11,11 @@ export default function Popular() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=73ea132ff745a5ddfdf52978aa7204e1');
+            const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=db8f29ba6e1e44b8b22e02c5def38a8e');
             const data = await response.json();
             const movies = data.results.slice(0, 20);
             const movieDetails = await Promise.all(movies.map(async (movie) => {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=73ea132ff745a5ddfdf52978aa7204e1`);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=db8f29ba6e1e44b8b22e02c5def38a8e`);
                 const data = await response.json();
                 return { ...movie, runtime: data.runtime, genres: data.genres };
             }));
